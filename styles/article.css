@@ -33,7 +33,7 @@
     & > article {
       color: var(--text-color-0);
 
-      font-family: serif;
+      font-family: "Noto Serif TC", serif;
       font-weight: 600;
       line-height: 1.75rem;
 

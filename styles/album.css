@@ -51,7 +51,7 @@
         margin-top: 0.5rem;
 
         & > details {
-          font-family: serif;
+          font-family: "Noto Serif TC", serif;
           text-align: right;
 
           & > summary {
