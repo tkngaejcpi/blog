@@ -26,7 +26,7 @@
 
 @layer typography {
   main {
-    font-family: serif;
+    font-family: "Noto Serif TC", serif;
 
     & > section {
       & > h2 {
