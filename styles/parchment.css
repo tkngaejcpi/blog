@@ -1,0 +1,29 @@
+@layer color, responsive;
+
+@layer color {
+  :root {
+    --base-text-color: #222222;
+    --base-background-color: #fdf6e3;
+
+    --text-color-0: color-mix(in srgb, var(--base-text-color) 100%, white);
+    --text-color-1: color-mix(in srgb, var(--base-text-color) 80%, white);
+
+    --background-color-0: color-mix(
+      in srgb,
+      var(--base-background-color) 100%,
+      grey
+    );
+    --background-color-1: color-mix(
+      in srgb,
+      var(--base-background-color) 80%,
+      grey
+    );
+  }
+}
+
+@layer responsive {
+  :root {
+    --image-min-width: 30%;
+    --image-max-width: 60%;
+  }
+}

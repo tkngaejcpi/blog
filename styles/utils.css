@@ -1,0 +1,8 @@
+@layer text;
+
+@layer text {
+    span.underdot {
+        text-emphasis: dot;
+        text-emphasis-position: under;
+    }
+}

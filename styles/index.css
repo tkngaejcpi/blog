@@ -1,0 +1,45 @@
+@import url("/styles/utils.css");
+@import url("/styles/parchment.css");
+
+@layer config, responsive, page, typegraphy;
+
+@layer config {
+  :root {
+    --body-margin: 1rem;
+    --base-text-size: 16px;
+  }
+}
+
+@layer responsive {
+  :root {
+    font-size: var(--base-text-size);
+  }
+}
+
+@layer page {
+  body {
+    margin: var(--body-margin);
+
+    background-color: var(--background-color-0);
+  }
+}
+
+@layer typography {
+  main {
+    font-family: serif;
+
+    & > section {
+      & > h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+      }
+
+      & > ul {
+        font-size: 1.25rem;
+        font-weight: 500;
+
+        line-height: 1.75rem;
+      }
+    }
+  }
+}

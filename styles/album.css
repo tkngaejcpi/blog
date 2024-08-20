@@ -1,0 +1,74 @@
+@import url("/styles/utils.css");
+@import url("/styles/parchment.css");
+
+@layer config, responsive, page, typegraphy;
+
+@layer config {
+  :root {
+    --body-margin: 3rem;
+    --base-text-size: 16px;
+  }
+}
+
+@layer responsive {
+  :root {
+    font-size: var(--base-text-size);
+  }
+}
+
+@layer page {
+  body {
+    margin: var(--body-margin);
+
+    background-color: var(--background-color-0);
+  }
+}
+
+@layer typography {
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    align-items: center;
+
+    & > figure {
+      margin: 0;
+
+      max-width: calc(90dvw - 2 * var(--body-margin));
+      width: auto;
+
+      & > img {
+        max-height: calc(90dvh - 2 * var(--body-margin));
+        width: 100%;
+
+        & + img {
+          margin-top: 1rem;
+        }
+      }
+
+      & > figcaption {
+        margin-top: 0.5rem;
+
+        & > details {
+          font-family: serif;
+          text-align: right;
+
+          & > summary {
+            color: var(--text-color-0);
+
+            font-weight: 700;
+            font-size: 1.25rem;
+          }
+
+          & > :not(summary) {
+            color: var(--text-color-1);
+
+            font-weight: 500;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

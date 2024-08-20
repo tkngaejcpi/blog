@@ -1,0 +1,100 @@
+@import url("/styles/utils.css");
+@import url("/styles/parchment.css");
+
+@layer config, responsive, page, typegraphy;
+
+@layer config {
+  :root {
+    --body-margin: 1rem;
+    --base-text-size: 16px;
+  }
+}
+
+@layer responsive {
+  :root {
+    font-size: var(--base-text-size);
+  }
+}
+
+@layer page {
+  body {
+    margin: var(--body-margin);
+
+    background-color: var(--background-color-0);
+  }
+}
+
+@layer typography {
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & > article {
+      color: var(--text-color-0);
+
+      font-family: serif;
+      font-weight: 600;
+      line-height: 1.75rem;
+
+      /* article title (should have and only have one in each article) */
+      & > hgroup:has(> h1) {
+        margin-top: 1.25rem;
+        margin-bottom: 0.75rem;
+
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-right: 0.75rem;
+
+        /* hgroup > h1 represent the title */
+        & > h1 {
+          margin-top: 0;
+          margin-bottom: 0.75rem;
+
+          font-size: 2.25rem;
+          font-weight: 700;
+        }
+
+        /* hgroup > p represent the subtitle */
+        & > p {
+          margin-top: 0;
+          margin-bottom: 0;
+
+          padding-left: 0.25rem;
+
+          color: var(--text-color-1);
+
+          font-size: 1.25rem;
+        }
+      }
+
+      /* zoom first letter in the first paragraph */
+      & > p:first-of-type:first-letter {
+        font-size: 1.75rem;
+      }
+
+      /* an image should float left or right, otherwise use <figure> instead. */
+      & > img {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+
+        min-width: var(--image-min-width);
+        max-width: var(--image-max-width);
+
+        &:not(.right) {
+          margin-left: 0;
+          margin-right: 0.75rem;
+
+          float: left;
+        }
+
+        &.right {
+          margin-left: 0.75rem;
+          margin-right: 0;
+
+          float: right;
+        }
+      }
+    }
+  }
+}
