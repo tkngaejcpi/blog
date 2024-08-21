@@ -1,6 +1,9 @@
 @import url("/styles/utils.css");
 @import url("/styles/parchment.css");
 
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
+
 @layer config, responsive, page, typegraphy;
 
 @layer config {
