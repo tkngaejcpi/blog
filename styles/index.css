@@ -28,7 +28,12 @@
 }
 
 @layer typography {
+  a {
+    color: var(--text-color-0);
+  }
+
   main {
+    color: var(--text-color-0);
     font-family: "Noto Serif TC", serif;
 
     & > section {

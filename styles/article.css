@@ -28,6 +28,10 @@
 }
 
 @layer typography {
+  a {
+    color: var(--text-color-0);
+  }
+
   main {
     display: flex;
     flex-direction: column;
