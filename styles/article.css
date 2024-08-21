@@ -32,6 +32,16 @@
     color: var(--text-color-0);
   }
 
+  /* latin words in chinese article */
+  article:lang(zh) span:lang(en) {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+
+    font-family: "Noto Serif", "Noto Serif TC", serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+
   main {
     display: flex;
     flex-direction: column;
