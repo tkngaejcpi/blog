@@ -2,36 +2,47 @@
 @import url("/styles/parchment.css");
 
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
 
-@layer config, responsive, page, typegraphy;
-
-@layer config {
-  :root {
-    --body-margin: 3rem;
-    --base-text-size: 16px;
-  }
-}
+@layer responsive, page, typegraphy;
 
 @layer responsive {
   :root {
-    font-size: var(--base-text-size);
+    font-size: 16px;
   }
 }
 
 @layer page {
   body {
-    margin: var(--body-margin);
+    margin: 3rem;
 
     background-color: var(--background-color-0);
   }
 }
 
-@layer typography {
-  a {
-    color: var(--text-color-0);
-  }
+@layer typography.font {
+  main {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
 
+    a {
+      color: inherit;
+    }
+
+    & > figure > figcaption > details {
+      & > summary {
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+
+      & > :not(summary) {
+        color: var(--text-color-1);
+      }
+    }
+  }
+}
+
+@layer typography.position {
   main {
     display: flex;
     flex-direction: column;
@@ -58,22 +69,7 @@
         margin-top: 0.5rem;
 
         & > details {
-          font-family: "Noto Serif TC", serif;
           text-align: right;
-
-          & > summary {
-            color: var(--text-color-0);
-
-            font-weight: 700;
-            font-size: 1.25rem;
-          }
-
-          & > :not(summary) {
-            color: var(--text-color-1);
-
-            font-weight: 500;
-            font-size: 1rem;
-          }
         }
       }
     }

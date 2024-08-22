@@ -2,39 +2,32 @@
 @import url("/styles/parchment.css");
 
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
 
-@layer config, responsive, page, typegraphy;
-
-@layer config {
-  :root {
-    --body-margin: 1rem;
-    --base-text-size: 16px;
-  }
-}
+@layer responsive, page, typegraphy;
 
 @layer responsive {
   :root {
-    font-size: var(--base-text-size);
+    font-size: 16px;
   }
 }
 
 @layer page {
   body {
-    margin: var(--body-margin);
+    margin: 1rem;
 
     background-color: var(--background-color-0);
   }
 }
 
-@layer typography {
-  a {
-    color: var(--text-color-0);
-  }
-
+@layer typography.font {
   main {
     color: var(--text-color-0);
     font-family: "Noto Serif TC", serif;
+
+    a {
+      color: inherit;
+    }
 
     & > section {
       & > h2 {
@@ -44,10 +37,14 @@
 
       & > ul {
         font-size: 1.25rem;
-        font-weight: 500;
-
-        line-height: 1.75rem;
+        font-weight: 600;
       }
     }
+  }
+}
+
+@layer typography.position {
+  main > ul {
+    line-height: 1.75rem;
   }
 }
