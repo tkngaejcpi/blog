@@ -1,7 +1,8 @@
 @layer text;
 
 @layer text {
-  span.underdot {
+  /* efs stands for emphasize */
+  span.efs {
     text-emphasis: triangle;
     text-emphasis-position: under;
   }
