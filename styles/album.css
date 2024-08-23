@@ -53,11 +53,11 @@
     & > figure {
       margin: 0;
 
-      max-width: calc(90dvw - 2 * var(--body-margin));
+      max-width: calc(90dvw - 6rem);
       width: auto;
 
       & > img {
-        max-height: calc(90dvh - 2 * var(--body-margin));
+        max-height: calc(90dvh - 6rem);
         width: 100%;
 
         & + img {
