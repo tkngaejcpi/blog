@@ -1,9 +1,0 @@
-@layer text;
-
-@layer text {
-  /* efs stands for emphasize */
-  span.efs {
-    text-emphasis: triangle;
-    text-emphasis-position: under;
-  }
-}

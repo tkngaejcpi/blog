@@ -1,4 +1,3 @@
-@import url("/styles/utils.css");
 @import url("/styles/parchment.css");
 
 /* google fonts */
@@ -28,6 +27,10 @@
 
     a {
       color: inherit;
+    }
+
+    strong {
+      font-weight: inherit;
     }
 
     & > hgroup {
@@ -110,6 +113,15 @@
     &:lang(zh) span:lang(en) {
       margin-left: 0.25rem;
       margin-right: 0.25rem;
+    }
+  }
+}
+
+@layer typography.decoration {
+  article {
+    strong {
+      text-emphasis: triangle;
+      text-emphasis-position: under;
     }
   }
 }
