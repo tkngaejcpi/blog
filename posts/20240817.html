@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- relme auth -->
+    <link rel="me" href="https://c7.io/@rileycki" />
+    <link rel="me" href="https://github.com/tkngaejcpi" />
+
+    <!-- metadata -->
+    <title>在網頁上強調文本</title>
+    <meta
+      name="description"
+      content="除了使用粗體，我們還可以通過設定 text-emphasis 來強調文本，在一些字體上，這甚至表現得更好......"
+    />
+
+    <meta prorty="og:title" content="在網頁上強調文本" />
+    <meta
+      property="og:description"
+      content="除了使用粗體，我們還可以通過設定 text-emphasis 來強調文本，在一些字體上，這甚至表現得更好......"
+    />
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/styles/article.css" />
+
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://images.rileycki.com" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <main>
+      <article lang="zh">
+        <hgroup>
+          <h1>在網頁上強調文本</h1>
+        </hgroup>
+
+        <p>
+          如果我們需要在網頁上強調一段文本，一般來說，我們會通過字重（字體的粗細程度）的變化來體現。
+        </p>
+
+        <p>
+          最常見的做法便是利用<code>&lt;b&gt;</code>標籤將重點文本變為粗體。
+        </p>
+
+        <p>不過，在某些字體，尤其是襯線字體上，粗體會顯得有點突兀。</p>
+
+        <p>
+          這時候，可以考慮使用類似著重號的方式——即通過在文字下方加入下標的方式，來表示對某一元素的強調。
+        </p>
+
+        <p>
+          在<span lang="en">CSS</span
+          >中，文字下標可以通過<code>text-emphasis</code>來設置，具體資料可以參考<a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis"
+            ><span lang="en">MDN - text-emphasis</span></a
+          >。
+        </p>
+
+        <p>以下是一組對比範例：</p>
+
+        <figure>
+          <p>利用下標來<strong>強調</strong>文本。</p>
+
+          <p>利用粗體來<b>強調</b>文本。</p>
+        </figure>
+
+        <p>
+          我認為，至少在<span lang="en">Noto Serif TC</span
+          >這一字體上，下標的方式要比粗體美觀不少，故本網誌絕大多數文章都使用這種方式來強調文本。
+        </p>
+
+        <p>
+          另外，<code>&lt;b&gt;</code>標籤以前也被稱為粗體標籤。為了避免語義上的分歧，建議使用<span
+            lang="en"
+            >inherit font-weight</span
+          >的<code>&lt;strong&gt;</code>標籤來設定強調之元素。
+        </p>
+      </article>
+    </main>
+  </body>
+</html>

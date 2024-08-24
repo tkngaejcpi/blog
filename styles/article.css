@@ -1,8 +1,7 @@
 @import url("/styles/parchment.css");
 
 /* google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
 @layer responsive, page, typegraphy;
 
 @layer responsive {
@@ -29,13 +28,12 @@
       color: inherit;
     }
 
-    strong {
-      font-weight: inherit;
+    code {
+      font-family: "Jetbrains Mono", monospace;
     }
 
-    hgroup p {
-      color: var(--text-color-1);
-      font-size: 1.25rem;
+    strong {
+      font-weight: inherit;
     }
 
     :is(h1, h2, h3, h4) {
@@ -48,6 +46,11 @@
       &:is(h2) {
         font-size: 1.75rem;
       }
+    }
+
+    & > hgroup > p {
+      color: var(--text-color-1);
+      font-size: 1.25rem;
     }
 
     & > p:first-of-type:first-letter {
@@ -93,12 +96,26 @@
       }
     }
 
+    & > h2 {
+      margin-top: 3rem;
+    }
+
+    & > p code {
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+    }
+
+    & > figure {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
     & > img {
       margin-top: 0.25rem;
       margin-bottom: 0.25rem;
 
-      min-width: var(--image-min-width);
-      max-width: var(--image-max-width);
+      min-width: 30%;
+      max-width: 60%;
 
       &:not(.right) {
         margin-left: 0;
