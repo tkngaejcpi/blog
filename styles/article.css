@@ -110,9 +110,11 @@
       }
     }
 
-    &:lang(zh) span:lang(en) {
-      margin-left: 0.25rem;
-      margin-right: 0.25rem;
+    &:lang(zh) {
+      :is(span:lang(en), span.link) {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+      }
     }
   }
 }
@@ -122,6 +124,10 @@
     strong {
       text-emphasis: triangle;
       text-emphasis-position: under;
+    }
+
+    span.link {
+      text-decoration: underline;
     }
   }
 }
