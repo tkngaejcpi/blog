@@ -56,7 +56,6 @@
       width: auto;
 
       & > img {
-        max-height: calc(90dvh - 6rem);
         width: 100%;
 
         & + img {
