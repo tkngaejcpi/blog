@@ -33,15 +33,20 @@
       font-weight: inherit;
     }
 
-    & > hgroup {
-      & > h1 {
-        font-weight: 700;
+    hgroup p {
+      color: var(--text-color-1);
+      font-size: 1.25rem;
+    }
+
+    :is(h1, h2, h3, h4) {
+      font-weight: 700;
+
+      &:is(h1) {
         font-size: 2.25rem;
       }
 
-      & > p {
-        color: var(--text-color-1);
-        font-size: 1.25rem;
+      &:is(h2) {
+        font-size: 1.75rem;
       }
     }
 
