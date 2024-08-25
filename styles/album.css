@@ -57,6 +57,9 @@
 
       & > img {
         width: 100%;
+        max-height: calc(90dvh - 6rem);
+
+        object-fit: contain;
 
         & + img {
           margin-top: 1rem;
