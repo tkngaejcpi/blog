@@ -59,6 +59,8 @@
         width: 100%;
         max-height: calc(90dvh - 6rem);
 
+        display: block;
+
         object-fit: contain;
 
         & + img {
