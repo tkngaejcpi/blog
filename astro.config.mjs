@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://tkngaejcpi.github.io',
+	site: 'https://satlyun.pages.dev',
 
 	integrations: [sitemap()],
 
