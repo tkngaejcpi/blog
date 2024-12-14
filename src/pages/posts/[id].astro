@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+
+import 'katex/dist/katex.min.css';
+
+import Page from '@components/Page.astro';
+import PostFooter from '@components/PostFooter.astro';
+
+export const getStaticPaths = (async () => {
+	const posts = await getCollection('posts');
+
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Page title={post.data.title}>
+	<article>
+		<!-- information of the post -->
+		<h1>{post.data.title}</h1>
+		<hr />
+
+		<!-- body -->
+		<Content />
+		<hr />
+
+		<!-- footer -->
+		<PostFooter copyrightReserved={post.data.copyrightReserved} />
+	</article>
+</Page>
+
+<style>
+	h1 {
+		font-size: 1.5em;
+	}
+
+	hr:has(+ footer) {
+		margin-bottom: 1em;
+	}
+</style>
+
+<!-- markdown content -->
+<style is:global>
+	p,
+	ul {
+		line-height: 1.75em;
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	.katex-display {
+		padding: 0 2em;
+
+		overflow-x: scroll;
+		overflow-y: clip;
+	}
+
+	pre:has(> code) {
+		padding: 0.75em 1em;
+
+		overflow-x: scroll;
+		overflow-y: clip;
+
+		border: 0.25em double gray;
+
+		& > code {
+			font-size: 0.9em;
+		}
+	}
+
+	hr {
+		margin: 1.5em 0;
+
+		border: none;
+		border-top: 1px dashed gray;
+	}
+</style>

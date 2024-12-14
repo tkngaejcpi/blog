@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+
+import { type PostFilter } from '@utils/post';
+
+interface Props {
+	title: string;
+	postFilter: PostFilter;
+}
+
+const { title, postFilter } = Astro.props;
+
+const posts = postFilter(await getCollection('posts'));
+---
+
+<div>
+	<h2>{title}</h2>
+
+	<ul>
+		{
+			posts.map((post) => (
+				<li>
+					<a href={`/posts/${post.id}`}>{post.data.title}</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
+
+<style>
+	h2 {
+		margin-top: 0em;
+
+		font-size: 1.5em;
+	}
+
+	ul {
+		padding-left: 1em;
+
+		line-height: 1.75em;
+
+		list-style: disclosure-closed;
+	}
+</style>
