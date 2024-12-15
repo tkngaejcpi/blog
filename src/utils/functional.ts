@@ -42,8 +42,8 @@ export const filter: <A>(fn: Fn<A, boolean>) => Opr<A[]> = (fn) => (a) =>
 	a.filter(fn);
 
 /**
- * @param fn a function to determine if two element is equal
- * @returns a list with only unique element
+ * @param fn a function to determine if two elements are equal
+ * @returns a list only with unique element
  */
 export const unique: <A>(fn: (_: A, __: A) => boolean) => Opr<A[]> =
 	(fn) => (lst) => {
