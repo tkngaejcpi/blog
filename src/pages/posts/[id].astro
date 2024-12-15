@@ -5,7 +5,8 @@ import { getCollection, render } from 'astro:content';
 import 'katex/dist/katex.min.css';
 
 import Page from '@components/Page.astro';
-import PostFooter from '@components/PostFooter.astro';
+import CopyrightFooter from '@components/CopyrightFooter.astro';
+import CCFooter from '@components/CCFooter.astro';
 
 export const getStaticPaths = (async () => {
 	const posts = await getCollection('posts');
@@ -31,7 +32,7 @@ const { Content } = await render(post);
 		<hr />
 
 		<!-- footer -->
-		<PostFooter copyrightReserved={post.data.copyrightReserved} />
+		{post.data.copyrightReserved ? <CopyrightFooter /> : <CCFooter />}
 	</article>
 </Page>
 
