@@ -16,6 +16,7 @@
 		"@fontsource-variable/jetbrains-mono": "^5.1.1",
 		"@fontsource-variable/noto-serif-hk": "^5.1.1",
 		"@fontsource-variable/noto-serif-tc": "^5.1.1",
+		"@types/sanitize-html": "^2.13.0",
 		"astro": "^5.0.2",
 		"katex": "^0.16.11",
 		"rehype-katex": "^7.0.1",
@@ -24,7 +25,6 @@
 		"typescript": "^5.7.2"
 	},
 	"devDependencies": {
-		"@types/sanitize-html": "^2.13.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-astro": "^0.14.1"
 	}

@@ -25,6 +25,9 @@ importers:
       '@fontsource-variable/noto-serif-tc':
         specifier: ^5.1.1
         version: 5.1.1
+      '@types/sanitize-html':
+        specifier: ^2.13.0
+        version: 2.13.0
       astro:
         specifier: ^5.0.2
         version: 5.0.2(rollup@4.28.0)(typescript@5.7.2)(yaml@2.6.1)
@@ -44,9 +47,6 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
     devDependencies:
-      '@types/sanitize-html':
-        specifier: ^2.13.0
-        version: 2.13.0
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
