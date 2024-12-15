@@ -32,11 +32,13 @@ const { title, description = '' } = Astro.props;
 		<meta name="description" content={description} />
 
 		<!-- extra scripts -->
-		<!-- Cloudflare Web Analytics -->
 		<script
+			is:inline
 			defer
 			src="https://static.cloudflareinsights.com/beacon.min.js"
-			data-cf-beacon='{"token": "e704f68e9ee84fd6ad68f2deb7164982"}'></script>
+			data-cf-beacon={JSON.stringify({
+				token: import.meta.env.CLOUDFLARE_WEB_STATISTICS_TOKEN,
+			})}></script>
 	</head>
 	<body>
 		<slot />
