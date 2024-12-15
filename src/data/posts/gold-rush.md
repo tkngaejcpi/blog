@@ -1,6 +1,7 @@
 ---
 title: '淘金熱'
 createdDate: 2024-12-14
+description: '使用 Kodak Tri-X 400 拍攝照片四則。'
 tags: ['narrative']
 ---
 
