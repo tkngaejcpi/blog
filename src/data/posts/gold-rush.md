@@ -8,16 +8,16 @@ tags: ['narrative']
 
 ---
 
-![](https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241201.webp)
+<img height="1000" width="1500" src="https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241201.webp" />
 
 ---
 
-![](https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241202.webp)
+<img height="1000" width="1500" src="https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241202.webp" />
 
 ---
 
-![](https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241203.webp)
+<img height="1000" width="1500" src="https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241203.webp" />
 
 ---
 
-![](https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241204.webp)
+<img height="1000" width="1500" src="https://pub-a02a077093e64206a30e98d1dff25372.r2.dev/20241204.webp" />
