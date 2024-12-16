@@ -1,0 +1,31 @@
+---
+import { config } from '@config';
+
+const now = new Date();
+---
+
+<div>
+	<h2>Info</h2>
+
+	<ul>
+		<li>於 <a href="/archives">Archives</a> 查看所有貼文</li>
+		<li>提供 <a href="/rss.xml">RSS</a> 輸出</li>
+		<li>本快照於 {now.toLocaleDateString(config.locale)} 構建</li>
+	</ul>
+</div>
+
+<style>
+	h2 {
+		margin-top: 0em;
+
+		font-size: 1.5em;
+	}
+
+	ul {
+		padding-left: 1em;
+
+		line-height: 1.75em;
+
+		list-style: disclosure-closed;
+	}
+</style>
