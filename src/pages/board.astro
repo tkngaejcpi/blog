@@ -1,0 +1,53 @@
+---
+export const prerender = false;
+
+import Page from '@components/Page.astro';
+import { commentSet } from '@models/Comment';
+
+import { pipe } from '@utils/functional';
+
+const { KV } = Astro.locals.runtime.env;
+
+const comments = await pipe(
+	(await KV.get(import.meta.env.BOARD_KV_KEY)) || JSON.stringify([]),
+	JSON.parse,
+	commentSet.parseAsync,
+);
+---
+
+<Page title="留言板">
+	<div class="container">
+		<h2>留言板</h2>
+
+		<ul>
+			<li>test</li>
+			{
+				comments.map((comment) => (
+					<li>
+						<a href={comment.commenter.website}>{comment.commenter.name}</a>：{comment.content}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</Page>
+
+<style>
+	div.container {
+		padding: 2em 1em;
+	}
+
+	h2 {
+		margin-top: 0em;
+
+		font-size: 1.5em;
+	}
+
+	ul {
+		padding-left: 1em;
+
+		line-height: 1.75em;
+
+		list-style: disclosure-closed;
+	}
+</style>

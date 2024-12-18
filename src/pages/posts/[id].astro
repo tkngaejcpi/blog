@@ -5,6 +5,7 @@ import { getCollection, render } from 'astro:content';
 import 'katex/dist/katex.min.css';
 
 import Page from '@components/Page.astro';
+import Comments from '@components/Comments.astro';
 import CopyrightFooter from '@components/CopyrightFooter.astro';
 import CCFooter from '@components/CCFooter.astro';
 
@@ -30,6 +31,9 @@ const { Content } = await render(post);
 		<!-- body -->
 		<Content />
 		<hr />
+
+		<Comments id={post.id} />
+		<hr/>
 
 		<!-- footer -->
 		{post.data.copyrightReserved ? <CopyrightFooter /> : <CCFooter />}

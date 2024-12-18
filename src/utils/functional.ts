@@ -70,4 +70,6 @@ export const mergeOprs: <T>(...oprs: Opr<T>[]) => Opr<T> = (...oprs) => {
 
 export const take: <T>(n: number) => Opr<T[]> = (n) => (x) => x.slice(0, n);
 
+export const append: <T>(a: T) => Opr<T[]> = (a) => (list) => [...list, a];
+
 export const id: <T>(_: T) => T = (x) => x;

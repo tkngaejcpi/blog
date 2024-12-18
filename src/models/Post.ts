@@ -1,6 +1,6 @@
 import { z } from 'astro:content';
 
-export const schema = z.object({
+export const post = z.object({
 	title: z.string(),
 	createdDate: z.date(),
 
@@ -9,4 +9,4 @@ export const schema = z.object({
 	copyrightReserved: z.boolean().default(false),
 });
 
-export type Schema = z.infer<typeof schema>;
+export type Post = z.infer<typeof post>;

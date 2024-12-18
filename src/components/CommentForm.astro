@@ -1,0 +1,92 @@
+---
+import CloudflareTurnstile from '@components/CloudflareTurnstile.astro';
+
+interface Props {
+	postId: string;
+}
+
+const { postId } = Astro.props;
+---
+
+<p><strong>建立評論：</strong></p>
+
+<form method="post" action="/comment">
+	<input type="hidden" name="post-id" value={postId} />
+
+	<div>
+		<label for="commenter-name">你的暱稱：</label>
+		<input type="text" id="commenter-name" name="commenter-name" required />
+	</div>
+
+	<div>
+		<label for="commenter-website">你的個人網站：</label>
+		<input
+			type="url"
+			id="commenter-website"
+			name="commenter-website"
+			placeholder="可選"
+		/>
+	</div>
+
+	<div>
+		<label for="content">你的評論：</label>
+		<textarea id="content" name="content" required></textarea>
+	</div>
+
+	<CloudflareTurnstile />
+
+	<input type="submit" value="提交" />
+</form>
+
+<style>
+	/* layout */
+	label {
+		font-size: 0.9em;
+
+		input {
+			margin-left: 0.5em;
+		}
+	}
+
+	form {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 0.75em;
+
+		& > div {
+			flex-grow: 1;
+			max-width: 100%;
+
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
+
+			&:has(> textarea#content) {
+				flex-basis: 100%;
+			}
+
+			input,
+			textarea {
+				max-width: inherit;
+			}
+
+			textarea {
+				resize: vertical;
+			}
+		}
+
+		& > input[type='submit'] {
+			width: 100%;
+		}
+
+		input,
+		textarea {
+			padding: 0.3em;
+
+			font-family: inherit;
+			font-weight: inherit;
+			font-size: 0.9em;
+		}
+	}
+</style>

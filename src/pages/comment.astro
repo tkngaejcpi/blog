@@ -1,0 +1,125 @@
+---
+export const prerender = false;
+
+import Page from '@components/Page.astro';
+import {
+	comment as commentParser,
+	commentSet as commentsParser,
+} from '@models/Comment';
+
+import { pipe, append } from '@utils/functional';
+import { z } from 'astro:content';
+
+const parser = z
+	.object({
+		'post-id': z.string(),
+		'commenter-name': z.string(),
+		'commenter-website': z
+			.string()
+			.optional()
+			.transform((x) => x || undefined),
+		content: z.string(),
+		'cf-turnstile-response': z.string(),
+	})
+	.transform((x) => ({
+		post: x['post-id'],
+
+		commenter: {
+			name: x['commenter-name'],
+			website: x['commenter-website'],
+		},
+		content: x['content'],
+
+		cfTurnstileResponse: x['cf-turnstile-response'],
+	}));
+
+const errorResponse = new Response(null, { status: 400 });
+
+/* guard: only accept post to create comment on board */
+if (Astro.request.method != 'POST') {
+	return errorResponse;
+}
+
+const requestForm = await Astro.request.formData();
+const parsed = pipe(
+	requestForm.entries(),
+	Object.fromEntries,
+	parser.safeParse,
+);
+
+/* guard: data should match the shape */
+if (parsed.error) {
+	return errorResponse;
+}
+
+const { data } = parsed;
+
+const dummyKey = '1x0000000000000000000000000000000AA';
+const turnstileKey = import.meta.env.PROD
+	? import.meta.env.CLOUDFLARE_TURNSTILE_SECRETKEY
+	: dummyKey;
+
+const idempotencyKey = crypto.randomUUID();
+
+const turnstileCheckForm = new FormData();
+turnstileCheckForm.append('secret', turnstileKey);
+turnstileCheckForm.append('response', data.cfTurnstileResponse);
+turnstileCheckForm.append('remoteip', Astro.clientAddress);
+turnstileCheckForm.append('idempotency_key', idempotencyKey);
+
+const turnstileCheck = await fetch(
+	'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+	{ body: turnstileCheckForm, method: 'POST' },
+).then((res) => res.json() as Promise<{ success: boolean }>);
+
+/* guard: turnstile test should pass */
+if (!turnstileCheck.success) {
+	return errorResponse;
+}
+
+/* add the comment to board */
+const now = new Date();
+
+/* contain async transformation, use async */
+const comment = await commentParser.parseAsync({
+	...data,
+	createdTime: now,
+});
+
+const { KV } = Astro.locals.runtime.env;
+
+const comments = await pipe(
+	(await KV.get(import.meta.env.BOARD_KV_KEY)) || JSON.stringify([]),
+	JSON.parse,
+	commentsParser.parseAsync,
+);
+
+await KV.put(
+	import.meta.env.BOARD_KV_KEY,
+	pipe(comments, append(comment), JSON.stringify),
+);
+---
+
+<Page title="Comment">
+	<div class="container">
+		<h2>提示</h2>
+
+	<p>
+		評論成功！你可以到<a href="/board">留言板</a>查看，或者回到<a
+			href={`/posts/${comment.post.id}`}>原文</a
+		>。
+	</p>
+	</div>
+</Page>
+
+<style>
+	div.container {
+		padding: padding: 2em 1em;
+	}
+
+	h2 {
+		margin-top: 0em;
+
+		font-size: 1.5em;
+	}
+</style>

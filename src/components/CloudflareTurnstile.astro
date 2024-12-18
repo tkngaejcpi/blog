@@ -1,0 +1,20 @@
+---
+/* with dummy key, the test always passes */
+const dummyKey = '1x00000000000000000000AA';
+
+const sitekey = import.meta.env.PROD
+	? import.meta.env.CLOUDFLARE_TURNSTILE_SITEKEY
+	: dummyKey;
+---
+
+<script
+	is:inline
+	src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+	async
+	defer></script>
+
+<div
+	class="cf-turnstile"
+	data-sitekey={sitekey}
+>
+</div>

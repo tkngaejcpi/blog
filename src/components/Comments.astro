@@ -1,0 +1,33 @@
+---
+import Show from '@components/Show.astro';
+import CommentForm from '@components/CommentForm.astro';
+
+import { pipe } from '@utils/functional';
+import { queryAll, filterByPost, sortByDate } from '@utils/comment';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+
+const comments = pipe(await queryAll(), filterByPost(id), sortByDate);
+---
+
+<Show when={comments.length != 0}>
+	<p><strong>評論：</strong></p>
+
+	<ul>
+		{
+			comments.map((comment, i) => (
+				<li>
+					<a href={comment.commenter.website}>{comment.commenter.name}</a>：
+					{comment.content}
+				</li>
+			))
+		}
+	</ul>
+	<hr />
+</Show>
+
+<CommentForm postId={id} />
